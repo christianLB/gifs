@@ -6,15 +6,35 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@webcomponents/webcomponentsjs": "^2.4.4",
+    "axios": "^0.19.2",
+    "dropbox": "^5.2.1",
+    "gif-player": "file:gif-player-master",
+    "gsap": "^3.5.1",
+    "image-size": "^0.8.3",
+    "lodash": "^4.17.20",
+    "moment": "^2.27.0",
+    "muuri": "^0.9.3",
+    "muuri-react": "^3.1.6",
+    "node-fetch": "^2.6.0",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-icons": "^3.11.0",
+    "react-loader-spinner": "^3.1.14",
+    "react-muuri": "^0.3.0",
+    "react-scripts": "3.4.1",
+    "react-slider": "^1.0.8",
+    "request-image-size": "^2.1.0",
+    "vendor-copy": "^2.0.0",
+    "webcomponentsjs": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "vendor-copy"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +50,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "vendorCopy": [
+    {
+      "from": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
+      "to": "public/vendor/custom-elements-es5-adapter.js"
+    },
+    {
+      "from": "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
+      "to": "public/vendor/webcomponents-bundle.js"
+    }
+  ]
 }

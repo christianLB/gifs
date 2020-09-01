@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState, useEffect } from 'react';
+import GifGroup from './components/gif_group.jsx';
+import './App.scss';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
 
 function App() {
+  const debug = true;
+  let [ loading, setLoading ] = useState(true);
+  let [ files, setFiles ] = useState([]);
+
+  useEffect(() => {
+  
+    const fetchData = async () => {
+      const result = await fetch('https://dl.dropboxusercontent.com/s/gekvtp92vkcyq5s/files.json?raw=1').then(r => r);
+      result.json().then(files => {
+        setFiles(files)
+      }).then(setLoading(false));
+    };
+ 
+    fetchData();
+  }, []);
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+        {!debug && <div className={'mask'}></div>}
+        {!loading && <GifGroup files={files} />}       
+        <Loader visible={loading} 
+                  type="Puff"
+                  color="#00BFFF"
+                  
+                  timeout={0}>loading 
+        </Loader> 
+    </Fragment>
   );
 }
 

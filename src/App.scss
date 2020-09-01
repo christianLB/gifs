@@ -1,0 +1,84 @@
+html, body {
+  height:100%;
+}
+
+.gifgroup {
+  background: transparent;
+}
+
+.spinner {
+  display: flex;
+  top: 0px;
+  right:0px;
+  justify-self: center;
+}
+
+.gif {
+  display: flex;
+  align-items: center;
+  position:relative;
+  overflow: hidden;
+  .speed {
+    position:absolute;
+    left:0px; top:0px;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.6);
+    padding:1px;
+    text-align:center;
+  }
+  .mask {
+    position:absolute;
+    top:0px;
+    bottom:0px;
+    left:0px;
+    width: 100%;
+    background-color:rgb(110, 110, 110);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:100px;
+    &::not(.transparent) {
+      cursor: pointer;
+    }
+    &.transparent {
+      opacity: 0;
+    }
+    &:hover {
+      background-color: rgb(138, 138, 138);
+    }
+    
+  }
+  &:hover {
+    .playercontrols {
+      bottom: 0px;
+    }
+  }
+  .playercontrols {
+    position: absolute;
+    cursor: arrow;
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFFFFF;
+    svg {
+      cursor: pointer;
+    }
+    .speedselector {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 70px;
+    }
+  }
+  &.focused {
+    border: 15px solid rgba(0,0,0,0.7);
+    box-sizing: border-box;
+  }
+}
+
