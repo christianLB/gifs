@@ -1,0 +1,22 @@
+.muuri {
+  max-height: 100vh;
+}
+
+.item {
+  //margin: 20px;
+  position: absolute; /* Required by Muuri */
+}
+
+.muuri-item-dragging {
+  z-index: 3;   /* Required by Muuri */
+}
+
+.muuri-item-releasing {
+  z-index: 2; /* Required by Muuri */
+}
+
+.muuri-item-hidden {
+  z-index: 0; /* Required by Muuri */
+}
+
+
