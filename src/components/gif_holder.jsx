@@ -12,7 +12,7 @@ const GifHolder = (props) => {
     let [speed, setSpeed ] = useState(1);
     let [focused, setFocused ] = useState(false);
 
-    const test = true;
+    const test = false;
     const loadOnStart = false;
     const showFileName = false;
     const ignoreBlocking = true;

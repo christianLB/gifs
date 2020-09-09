@@ -19,7 +19,7 @@ const { name, extenstion, fileSizeInBytes } = getFileInfoFromFolder("C:/Users/ch
 let Dropbox = require('dropbox');
 const fetch = require('node-fetch');
 
-const accessToken = 'ZOsQeqG43mAAAAAAAAAAARLdXKV8QHp00WhuYTnrPPa75k7DgG6RpjnB4lsLToNL';
+const accessToken = 'SJdjPT5frFwAAAAAAAAAAbA21tOUy5LjuJVSX6M6I9X-ZtvcrO1OqqgW-E8UvqjV';
 
 const files = [];
 
@@ -60,7 +60,7 @@ const getFiles = async () => {
   const res = await dbx.filesListFolder({  
     path: '/gifs2',  
   })
-  const filteredEntries = res.entries.filter( entry => ['gif'].includes(entry.name.split('.')[1]))
+  const filteredEntries = res.entries.filter( entry => entry.name.split('.').includes('gif'))
   
   const files = await Promise.all(filteredEntries.map(async entry => {
     let link = await getLink(entry.path_lower);
@@ -68,11 +68,7 @@ const getFiles = async () => {
     link = link.replace('www.dropbox.com', 'dl.dropboxusercontent.com');
     const size = await getSize(link);
     
-    const allowed = [
-      '35', '3', '4',
-      '33',
-      'l','g', '12', '6', '7'
-    ].includes(entry.name.split('.')[0]);
+    const allowed = !entry.name.split('.').includes('blocked');
 
     const file = {name: entry.name, url: link, width: size.width, height:size.height, blocked:!allowed};
     return file;
